@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TAKE</title>
+    </h:head>
+    <h:body>
+        <p:tabView>
+            <p:tab title="Form">
+                <h:form>
+                    <p:growl  id="msg" showDetail="true"/>
+                    <h:panelGrid columns="6">
+                        <p:spinner id="a" min="0" max="1000" value="#{myManagedBean.a}"/>
+                        <h:outputText value="+" />
+                        <p:spinner id="b" min="0" max="1000" value="#{myManagedBean.b}"/>
+                        <p:commandButton id="addButton" value="Dodaj" action="#{myManagedBean.doAdd()}" update="res date msg" ajax="true"/>
+                        <h:outputText value="=" />
+                        <h:outputText id="res" value="#{myManagedBean.res}" />
+                    </h:panelGrid>
+                    <p><h:outputText id="date" value="#{myManagedBean.currentDate}" /></p>
+                </h:form>
+            </p:tab>
+            <p:tab title="Table">
+                <p:dataTable var="students" value="#{studentsBean.students}">
+
+                    <p:column headerText="Name">
+                        <h:outputText value="#{students.name}" />
+                    </p:column>
+                    <p:column headerText="LastName" sortBy="#{students.lastName}">
+                        <h:outputText value="#{students.lastName}" />
+                    </p:column>
+                    <p:column headerText="Grade" sortBy="#{students.grade}">
+                        <h:outputText value="#{students.grade}" />
+                    </p:column>
+
+
+                </p:dataTable>
+            </p:tab>
+            <p:tab title="Chart">    
+                <h:form>
+                    <p:chart type="line" model="#{chartBean.lineModel}"  widgetVar="chart" />
+                    <p:commandButton type="button" value="Reset zoom"  onclick="PF('chart').resetZoom()"/>
+                </h:form>
+            </p:tab>
+        </p:tabView>
+
+    </h:body>
+</html>
+
