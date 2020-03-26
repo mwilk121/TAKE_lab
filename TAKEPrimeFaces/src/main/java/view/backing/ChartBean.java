@@ -22,10 +22,6 @@ import org.primefaces.model.chart.LineChartSeries;
 @RequestScoped
 public class ChartBean {
 
-    enum Function {
-        SIN,
-        COS
-    }
     private LineChartModel lineModel;
 
     /**
@@ -33,21 +29,6 @@ public class ChartBean {
      */
     public ChartBean() {
         init();
-    }
-
-    private LineChartSeries generateSeries(Function f) {
-        LineChartSeries s = new LineChartSeries();
-        String label = "Sin";
-        Double move = 0.0;
-        if (f.equals(Function.COS)) {
-            label = "Cos";
-            move = Math.PI / 2;
-        }
-        s.setLabel(label);
-        for (int i = 0; i < 36 * 10; i = i + 1) {
-            s.set(i, sin(Math.toRadians(Double.valueOf(i)) + move));
-        }
-        return s;
     }
 
     public void init() {
@@ -65,8 +46,6 @@ public class ChartBean {
         }
         lineModel.addSeries(sins);
         lineModel.addSeries(coss);
-        //lineModel.addSeries(generateSeries(Function.SIN));
-        //lineModel.addSeries(generateSeries(Function.COS));
 
         lineModel.setLegendPosition("e");
         lineModel.setZoom(true);

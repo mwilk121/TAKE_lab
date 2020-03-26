@@ -5,12 +5,10 @@ package view.backing;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import view.backing.MyManagedBean;
 
 /**
  *
@@ -57,7 +55,6 @@ public class StudentsBean {
             name = _name;
             lastName = _lastName;
             grade = _grade;
-            //grade = String.format("%.2f", 4.0 + (5.0 - 4.0) * rand.nextDouble()); //everyone is very smart
         }
 
         /**
@@ -98,11 +95,6 @@ public class StudentsBean {
         return students;
     }
 
-    /*public Student generateStudent() {
-        String name = names[rand.nextInt(size)];
-        String lastName = lastNames[rand.nextInt(size)];
-        return new Student(name, lastName);
-    }*/
     /**
      * @return the students
      */

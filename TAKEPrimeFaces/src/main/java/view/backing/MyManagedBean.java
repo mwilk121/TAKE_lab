@@ -21,10 +21,7 @@ import javax.faces.context.FacesContext;
 
 public class MyManagedBean {
 
-    /*private final int size = 4;
-    private List<Student> students;*/
     private double a, b, res;
-    //Random rand;
 
     /**
      * Creates a new instance of MyManagedBean
@@ -40,7 +37,6 @@ public class MyManagedBean {
     }
 
     public String getCurrentDate() {
-        //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         SimpleDateFormat formatter = new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy");
         Date date = new Date(System.currentTimeMillis());
         return formatter.format(date);
