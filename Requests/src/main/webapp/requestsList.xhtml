@@ -9,7 +9,7 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
-        <title>TODO supply a title</title>
+        <title>TAKE 4</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
@@ -20,6 +20,7 @@ and open the template in the editor.
             <h:outputText value="New request" />
             <h:inputText id="newReqInputText"  value="#{requestsList.newRequest}"  />
             <h:commandButton value="Add" action="#{requestsList.addRequest}" />
+            <h:message for="#{requestsList.newRequest}"/>
             <h:dataTable value="#{requestsList.allRequests}" var="item" border="1"  binding="#{requestsList.requestDataTable}" >
                 <h:column>
                     <f:facet name="header">
@@ -43,7 +44,7 @@ and open the template in the editor.
                     <f:facet name="header">
                         <h:outputText value=""/>
                     </f:facet>
-                    <h:commandButton value="Delete" action="#{requestsList.deleteRequest()}"/>
+                    <h:commandButton value="Delete" action="#{requestsList.deleteRequest()}" onclick="submit()" immediate="true" />
                 </h:column>
             </h:dataTable>
         </h:form>
