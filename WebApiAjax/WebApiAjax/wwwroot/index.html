@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#calc").click(function () {
+                var x = $("#x").val();
+                var y = $("#y").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/api/math",
+                    data: { "x": x, "y": y },
+                    dataType: "json",   
+                    success: function (json) {
+                        $("#sum").text(json.sum);
+                        $("#difference").text(json.difference);
+                        $("#product").text(json.product);
+                        $("#quotient").text(json.quotient);
+                    }
+                    });
+            });
+
+
+            
+        });        function calcvjs() {
+            var x = document.getElementById("x").value;
+            var y = document.getElementById("y").value
+            var uri ="/api/math"
+            var params = "x=" + x + "&y=" + y;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", uri+"?"+params);
+            xhr.responseType = "json";
+            xhr.onload = function () {
+                var json = xhr.response;
+                document.getElementById("sum").textContent = json.sum;
+                document.getElementById("difference").textContent = json.difference;
+                document.getElementById("product").textContent = json.product;
+                document.getElementById("quotient").textContent = json.quotient;
+            };
+            xhr.send();
+        }
+    </script>
+    <div>
+        <h1>Calculations</h1>
+        <form>
+            x = <input type="text" id="x" />
+            y = <input type="text" id="y" />
+            <input type="button" id="calc" value="Call API (jQuery)" />
+            <input type="button" id="calcjs" value="Call API (vanilla JS)" onclick="calcvjs()"/>
+        </form>
+        x + y = <span id="sum"></span><br />
+        x - y = <span id="difference"></span><br />
+        x * y = <span id="product"></span><br />
+        x / y = <span id="quotient"></span><br />
+    </div>
+
+</body>
+</html>
