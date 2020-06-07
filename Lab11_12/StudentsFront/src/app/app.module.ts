@@ -8,14 +8,14 @@ import { StudentService } from './student.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { FormsModule } from '@angular/forms';
-import { AboutComponentComponent } from './about-component/about-component.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentsComponent,
     StudentDetailComponent,
-    AboutComponentComponent
+    AboutComponent
   ],
   imports: [
     BrowserModule,
